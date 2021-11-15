@@ -1,9 +1,32 @@
-function createBase(base) {
-  return function(num) {
-    return base + num;
-  }
+function test() {
+  // get the scope and parameters of the function 
+  // via 'this' and 'arguments'
+  let context = this;
+  let args = arguments;
+  // if event is called, clear the timer and start over
+  clearTimeout(timer);
+  timer = setTimeout(function() {
+    fn.apply(context, args);
+  }, delay);
 }
 
-var addSix = createBase(6);
-console.log(addSix(10)); // returns 16
-console.log(addSix(21)); // returns 27
+// debounce function that will wrap our event
+// function debounce(fn, delay) {
+//   // maintain a timer
+//   let timer = null;
+//   // closure function that has access to timer
+//   return function() {
+//     // get the scope and parameters of the function 
+//     // via 'this' and 'arguments'
+//     let context = this;
+//     let args = arguments;
+//     // if event is called, clear the timer and start over
+//     clearTimeout(timer);
+//     timer = setTimeout(function() {
+//       fn.apply(context, args);
+//     }, delay);
+//   }
+// }
+
+// const debouncer = debounce(() => console.log('heyu'), 2000);
+// debouncer();
